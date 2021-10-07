@@ -23,7 +23,7 @@ def lejupieladet_lapas(cik, cels):
         # time.sleep(1)
 
 # iegūst austiņu saites:
-def saites(cik):
+def saites(cik, cels):
     saites = []
 
     for i in range(1, cik + 1):
@@ -46,10 +46,34 @@ def saites(cik):
     return saites
 
 # info par vienām austiņām:
-# def info(url):
-#     info = []
+def info(cels, fails):
+    info = {}
+    with open(f"{cels}{fails}", 'r', encoding='UTF-8') as f:
+        html = f.read()
 
-#     return info
+    zupa = bs(html, "html.parser")
+
+    # klase: product-righter google-rich-snippet
+    galvena1 = zupa.find("div", {"class": "product-righter google-rich-snippet"})
+
+    info['produkta_nosaukums'] = galvena1.find("h1").text.replace('\n', '')
+    info['produkta_kods'] = galvena1.find("p").text.replace('\n', '').replace("Preces kods: ", '')
+    info['cena'] = galvena1.find("span", {"class": "price"}).find("span").text.replace(',','.')
+
+
+    # # klase: products-panel__body universal-panel__body
+    # galvena2 = zupa.find("div", {"class": "products-panel__body universal-panel__body"})
+
+    # # 2 tabulas:
+    # tabulas = galvena2.find_all("table")
+
+    # tabula = tabulas[0].find("a")
+
+    # return tabula[0]
+
+    # tabulas[1]
+
+    return info
 
 
 # pašlaik ir 45 lapas (07.10.2021.)
@@ -62,4 +86,4 @@ def saites(cik):
 # for i in range(1, cik):
 #     saglabat(saites[i], AUSTINAS, f"{i}_lapa.html")
 
-# print(info())
+print(info(AUSTINAS, "1_lapa.html"))
