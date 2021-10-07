@@ -23,7 +23,7 @@ def lejupieladet_lapas(cik, cels):
         # time.sleep(1)
 
 # iegūst austiņu saites:
-def saites(cik, cels):
+def saites(cik):
     saites = []
 
     for i in range(1, cik + 1):
@@ -50,6 +50,7 @@ def saites(cik, cels):
 #     info = []
 
 #     return info
+
 
 # pašlaik ir 45 lapas (07.10.2021.)
 # cik = 45
