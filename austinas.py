@@ -22,6 +22,7 @@ def lejupieladet_lapas(cik):
         time.sleep(1)
 
 # iegūst austiņu saites:
+
 def saites(cik):
     saites = []
 
@@ -46,6 +47,7 @@ def saites(cik):
 
 print(saites(45))
 print(len(saites(45))) # cik saites?
+
 
 # pašlaik ir 45 lapas (07.10.2021.)
 # lejupieladet_lapas(45)
