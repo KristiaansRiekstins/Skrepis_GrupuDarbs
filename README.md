@@ -1,1 +1,3 @@
-# Skrepis_GrupuDarbs
+# Grupu darbs "Skrepis"
+
+## 1. Info TBA
